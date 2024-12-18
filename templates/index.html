@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV File Processor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .upload-section {
+            border: 2px dashed #ccc;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 6px;
+            background-color: #f8f9fa;
+            transition: border-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .upload-section:hover {
+            border-color: #007bff;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        progress {
+            width: 100%;
+            height: 20px;
+            margin: 10px 0;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        progress::-webkit-progress-bar {
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        progress::-webkit-progress-value {
+            background-color: #007bff;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        progress::-moz-progress-bar {
+            background-color: #007bff;
+            border-radius: 4px;
+        }
+
+        .progress-container {
+            margin: 20px 0;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .progress-percentage {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .progress-files {
+            color: #555;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #e0e0e0;
+            padding: 15px;
+            border-radius: 6px;
+            height: 300px;
+            min-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+            border: 1px solid #333;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        pre::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        pre::-webkit-scrollbar-track {
+            background: #2d2d2d;
+            border-radius: 6px;
+        }
+
+        pre::-webkit-scrollbar-thumb {
+            background: #505050;
+            border-radius: 6px;
+            border: 2px solid #2d2d2d;
+        }
+
+        pre::-webkit-scrollbar-thumb:hover {
+            background: #606060;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background: #ccc;
+        }
+        #download-section {
+            display: none;
+        }
+        .important-note {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 12px 15px;
+            margin: 15px 0;
+            color: #495057;
+            font-size: 14px;
+            line-height: 1.5;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .important-note a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .important-note a:hover {
+            text-decoration: underline;
+        }
+
+        .subtitle {
+            color: #6c757d;
+            font-size: 14px;
+            margin: -5px 0 15px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .subtitle span {
+            display: inline-block;
+            margin-right: 15px;
+            padding-right: 15px;
+            border-right: 2px solid #e9ecef;
+        }
+
+        .subtitle span:last-child {
+            border-right: none;
+        }
+
+        .subtitle i {
+            color: #007bff;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1>CRICSHEET CSV-ZIP FILE PROCESSOR</h1>
+    <div class="subtitle">
+        <span><i>Frontend:</i> Flask Templates</span>
+        <span><i>Backend:</i> Flask Python</span>
+    </div>
+
+    <div class="important-note">
+        <strong>Important Note:</strong> This processor is specifically designed to process zipped CSV files from Cricsheet's experimental section. Source: <a href="https://cricsheet.org/downloads/#experimental" target="_blank">https://cricsheet.org/downloads/#experimental</a>
+    </div>
+
+    <div class="upload-section">
+        <input type="file" accept=".zip">
+        <div class="button-group">
+            <button>Process Files</button>
+            <div id="download-section">
+                <button onclick="window.processor.downloadFile()">Download Processed File</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-stats">
+            <span class="progress-percentage">0%</span>
+            <span class="progress-files">Processed: 0 / 0 files</span>
+        </div>
+        <progress value="0" max="100"></progress>
+    </div>
+    
+    <pre></pre>
+    
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html> 
