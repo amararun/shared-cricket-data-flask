@@ -49,6 +49,37 @@ This application provides a user-friendly interface for processing large ZIP fil
 
 ### Local Development
 
-1. Clone the repository:
+1. Clone the repository
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Run the development server:
+```bash
+python app.py
+```
+
+### Cloud Deployment
+
+The application can be deployed to various cloud platforms:
+
+- **Render**
+  - Build command: `pip install -r requirements.txt`
+  - Start command: `gunicorn app:app`
+
+- **Heroku**
+  - Automatically detects Python buildpack
+  - Uses included `Procfile`
+
+- **Railway**
+  - Uses `requirements.txt` for dependencies
+  - Start command: `gunicorn app:app`
+
+- **AWS Lambda**
+  - Can be containerized using included Dockerfile
+  - Deploy using AWS SAM or Serverless Framework
+
+Choose your preferred platform and follow their Python application deployment guidelines.
+
 ```bash
 git clone https://
