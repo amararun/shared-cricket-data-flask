@@ -80,6 +80,3 @@ The application can be deployed to various cloud platforms:
   - Deploy using AWS SAM or Serverless Framework
 
 Choose your preferred platform and follow their Python application deployment guidelines.
-
-```bash
-git clone https://
