@@ -80,3 +80,9 @@ The application can be deployed to various cloud platforms:
   - Deploy using AWS SAM or Serverless Framework
 
 Choose your preferred platform and follow their Python application deployment guidelines.
+
+## Author
+
+Built by [Amar Harolikar](https://www.linkedin.com/in/amarharolikar/)
+
+Explore 30+ open source AI tools for analytics, databases & automation at [tigzig.com](https://tigzig.com)
